@@ -102,3 +102,7 @@ function logInfo(param1, param2, param3, param4, param5, param6) {
 };
 
 logInfo(totalWords, countSentence, totalOverUsedWords, countReally, countVery, countBasically);
+
+// console.log(betterWords);
+
+console.log(betterWords.join(' '));
