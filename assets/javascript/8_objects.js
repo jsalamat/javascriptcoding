@@ -63,3 +63,76 @@ console.log(restaurantSpecials[meal]);
 // Bracket notation is required to use variables to look up keys within an object. 
 // It's not possible to use variables like this with dot notation.
 
+// -----  Adding Properties
+
+const restaurant = {
+  name: 'Italian Bistro',
+  seatingCapacity: 120,
+  hasDineInSpecial: true,
+  entrees: ['Penne alla Bolognese', 'Chicken Cacciatore', 'Linguine pesto']
+}
+
+// add appetizers and desserts keys by writing:
+
+restaurant['appetizers'] = ['Fried Calamari', 'Bruschetta'];
+restaurant.desserts = ['Homemade Tiramisu', 'Cannoli'];
+
+// Since appetizers and desserts don't exist in the restaurant object, 
+// these lines will create and add the key-value pairs
+
+// -----  Editing Properties
+// We can replace the values assigned to appetizers and desserts 
+// with new arrays like this:
+
+restaurant['appetizers'] = ['Fried Calamari', 'Bruschetta', 'Caprese Salad'];
+restaurant.desserts = ['Homemade Tiramisu', 'Canolli', 'Cheesecake'];
+
+// We used bracket and dot notations to specify which keys we wanted to select.
+// Then we set its value to a new array, this time with one more array item inside it.
+
+// -----  Methods
+// When objects have key-function pairs, we call the function a method. 
+// It looks like this:
+
+const restaurant = {
+  name: 'Italian Bistro',
+  seatingCapacity: 120,
+  hasDineInSpecial: true,
+  entrees: ['Penne alla Bolognese', 'Chicken Cacciatore', 'Linguine pesto'],
+  openRestaurant: () => {
+    return 'Unlock the door, flip the open sign. We are open for business!';
+  },
+  closeRestaurant: () => {
+    return 'Lock the door, flip the open sign. We are closed.'
+  }
+};
+
+console.log(restaurant.openRestaurant());
+
+console.log(restaurant.closeRestaurant());
+
+// Unlock the door, flip the open sign. We are open for business!
+// Lock the door, flip the open sign. We are closed.
+
+// A method is a key inside of an object set to a function for its value.
+
+// ---------------- Methods: ES6
+// The new method syntax (see below) doesn't require arrow syntax or a colon (:) 
+// with the function keyword.
+
+const restaurant = {
+  name: 'Italian Bistro',
+  seatingCapacity: 120,
+  hasDineInSpecial: true,
+  entrees: ['Penne alla Bolognese', 'Chicken Cacciatore', 'Linguine pesto'],
+
+  openRestaurant() {
+    return 'Unlock the door, flip the open sign. We are open for business!';
+  },
+  closeRestaurant() {
+    return 'Lock the door, flip the open sign. We are closed.'
+  }
+
+  // we change the syntax for the .openRestaurant() and .closeRestaurant() methods. 
+  // This syntax, which only requires the name of the method and parentheses, 
+  // is best practice for defining methods.
