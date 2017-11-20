@@ -157,9 +157,11 @@ const restaurant = {
 console.log(restaurant.openRestaurant());
 // ReferenceError: hasDineInSpecial is not defined
 
-// The error above doesn't work because hasDineInSpecial is out of the .openRestaurant() method's scope.
+// The error above doesn't work because hasDineInSpecial is out of the 
+// .openRestaurant() method's scope.
 
-// To address this scope issue, we can use the this keyword to access properties inside of the same object.
+// To address this scope issue, we can use the this keyword 
+// to access properties inside of the same object.
 
 const restaurant = {
   name: 'Italian Bistro',
@@ -178,9 +180,12 @@ const restaurant = {
 console.log(restaurant.openRestaurant());
 // Unlock the door, post the special on the board, then flip the open sign.
 
-// The .openRestaurant() method in the example above will return a value. The this keyword refers to the current object, which we use to grab the value saved to hasDineInSpecial.
+// The .openRestaurant() method in the example above will return a value. 
+// The this keyword refers to the current object, which we use to 
+// grab the value saved to hasDineInSpecial.
 
-// this.hasDineInSpecial inside the object is the same as accessing restaurant.hasDineInSpecial outside the object.
+// this.hasDineInSpecial inside the object is the same as 
+// accessing restaurant.hasDineInSpecial outside the object.
 
 let person = {
   name: 'Kash',
@@ -198,7 +203,10 @@ let person = {
 console.log(person.sayHello());
 // Hello, my name is Kash
 
-// You can connect this to a property within the object to use that property inside of a method. this represents the person object in this case, therefore writing this.name will equal the name key's value. Use the following syntax to interpolate the name key into the string.
+// You can connect this to a property within the object to use 
+// that property inside of a method. this represents the person object in this case, 
+// therefore writing this.name will equal the name key's value.
+// Use the following syntax to interpolate the name key into the string.
 // `This is how you interpolate a variable like ${myVariable}`
 
 // ---------------- this. Keyword II
@@ -228,7 +236,8 @@ yourObj.sayHello = myObj.sayHello;
 
 // this is a great way to make objects more flexible.
 //Under the person object, 
-// write another variable named friend and set it equal to an object with one key named name. 
+// write another variable named friend and set it equal to an object 
+// with one key named name. 
 // The value of name should be your friend's name.
 
 let person = {
@@ -266,13 +275,19 @@ console.log(friend.sayHello());
 // for which the name key is different.
 
 // ---------------- Getters and Setters I
-// Getter and setter methods get and set the properties inside of an object. There are a couple of advantages to using these methods for getting and setting properties directly:
+// Getter and setter methods get and set the properties inside of an object.
+// There are a couple of advantages to using these methods for getting 
+// and setting properties directly:
 
 // You can check if new data is valid before setting a property.
 // You can perform an action on the data while you are getting or setting a property.
 // You can control which properties can be set and retrieved.
 
-// To address this change, they would write code that checks if the newly set seatingCapacity value is valid. For example, the method should check if the seatingCapacity field is a number like 150, not the string 'one hundred fifty'. We can write this into a setter method as follows:
+// To address this change, they would write code that checks 
+// if the newly set seatingCapacity value is valid. For example, 
+// the method should check if the seatingCapacity field is a number like 150,
+//  not the string 'one hundred fifty'. We can write this into a setter method
+// as follows:
 
 let restaurant = {
   _name: 'Italian Bistro',
@@ -290,10 +305,23 @@ let restaurant = {
   }
 }
 
-// We prepended the property names with underscores (_). Developers use an underscore before a property name to indicate a property or value should not be modified directly by other code. We recommend prepending all properties with an underscore, and creating setters for all attributes you want to access later in your code.
-// The set seatingCapacity() setter method accepts newCapacity as a variable. The newCapacity variable holds the new value that we will store in _seatingCapacity.
-// Inside of the .seatingCapacity() setter we use a conditional statement to check if the newCapacity variable (our new value) is a number.
-//If the input value is a number (valid input), then we use this._seatingCapacity to change the value assigned to _seatingCapacity. If it is not valid, then we output a message to the user.
+// We prepended the property names with underscores (_). Developers use 
+// an underscore before a property name to indicate a property or value 
+// should not be modified directly by other code. We recommend prepending 
+// all properties with an underscore, and creating setters for all attributes 
+// you want to access later in your code.
+
+// The set seatingCapacity() setter method accepts newCapacity as a variable. 
+// The newCapacity variable holds the new value that we will store in 
+// _seatingCapacity.
+
+// Inside of the .seatingCapacity() setter we use a conditional statement
+// to check if the newCapacity variable (our new value) is a number.
+
+//If the input value is a number (valid input), then we use this._seatingCapacity
+//  to change the value assigned to _seatingCapacity. If it is not valid, 
+// then we output a message to the user.
+
 // Use the typeof method in an if statement to check if the input value is a number.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 
@@ -306,7 +334,11 @@ let restaurant = {
 restaurant.seatingCapacity = 150;
 // 150 is valid input.150 is valid input.
 
-// we set the _seatingCapacity value to 150. We use the same syntax we would use to set a property that doesn't have a setter method. Since the input (150) is a number, our method will execute the first block in the conditional statement — it changes _seatingCapacity to 150 and logs 150 is a valid input. to the console.
+// we set the _seatingCapacity value to 150. We use the same syntax 
+// we would use to set a property that doesn't have a setter method. 
+// Since the input (150) is a number, our method will execute the 
+// first block in the conditional statement — it changes _seatingCapacity 
+// to 150 and logs 150 is a valid input. to the console.
 
 
 
@@ -334,12 +366,17 @@ let restaurant = {
   }
 }
 
-// the getter method (get seatingCapacity()) logs something to the console and returns the value saved to _seatingCapacity. We call the getter method the same way we would access a property without a method:
+// the getter method (get seatingCapacity()) logs something to the console 
+// and returns the value saved to _seatingCapacity. We call the getter method
+//  the same way we would access a property without a method:
 
 restaurant.seatingCapacity = 150;
 const seats = restaurant.seatingCapacity;
 
-// In this example we set the seatingCapacity to 150, then call the getter method using restaurant.seatingCapacity and save the result to a variable called seats. The getter will also log the following line of code to the console:
+// In this example we set the seatingCapacity to 150, then call the 
+// getter method using restaurant.seatingCapacity and save the result to 
+// a variable called seats. The getter will also log the following line of code
+// to the console:
 
 // There are 150 seats at Italian Bistro.
 
