@@ -40,10 +40,17 @@ const menu = {
   
   addDishToCourse(courseName, dishName, dishPrice) {
     const dish = {
-      
+      name: dishName,
+      price: dishPrice
     };
-    this._course[courseName].push(dish);
+    
+    this._courses[courseName].push(dish);
     // also try using your setter method!
+  },
+  
+  getRandomDishFromCourse (courseName) {
+    const dishes = this._courses[courseName];
+    const randomIndex = Math.floor(Math.random() * dishes.length);
+    // return a dish from `dishes` by using `randomIndex`
   }
 };
-
