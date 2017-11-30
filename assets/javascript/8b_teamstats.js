@@ -42,3 +42,9 @@ const team = {
   },
 
 };
+
+team.addPlayer('Cody', 'Rhodes', 32);
+team.addPlayer('Marty', 'Scurll', 29);
+team.addPlayer('Adam', 'Page', 26);
+
+console.log(team.players);
