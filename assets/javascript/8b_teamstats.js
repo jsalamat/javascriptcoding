@@ -23,5 +23,22 @@ const team = {
         opponentPoints: 7},
   ],
   
+  get players () {
+    return this._players;
+  },
   
+  get games () {
+    return this._games;
+  },
+  
+  addPlayer(firstName, lastName, age) {
+    let player = {
+      firstName: firstName,
+      lastName: lastName,
+      age: age
+    };
+
+    this.players.push(player);
+  },
+
 };
