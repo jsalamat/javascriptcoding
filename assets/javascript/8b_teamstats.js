@@ -37,8 +37,16 @@ const team = {
       lastName: lastName,
       age: age
     };
-
     this.players.push(player);
+  },
+
+  addGame(opponentName, teamPts, oppPts) {
+    let game ={
+      opponent: opponentName,
+      teamPoints: teamPts,
+      opponentPoints: oppPts,
+    };
+    this.games.push(game);
   },
 
 };
@@ -48,3 +56,11 @@ team.addPlayer('Marty', 'Scurll', 29);
 team.addPlayer('Adam', 'Page', 26);
 
 console.log(team.players);
+
+console.log("----------------------------------");
+
+team.addGame('Chris Jericho', 80, 73);
+team.addGame('NWO', 70, 56);
+team.addGame('Degeneration X', 90, 10);
+
+console.log(team.games);
