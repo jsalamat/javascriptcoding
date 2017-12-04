@@ -58,6 +58,13 @@ console.log('-------------------------------------------------------------------
 //---------------------------------Constructor-----------------------------------------
 //-------------------------------------------------------------------------------------
 
+class VariableName {
+	constructor(inputOne, inputTwo) {
+	  this.inputOne = inputOne;
+	  this.inputTwo = inputTwo;
+	}
+}
+
 // Although you may see similarities between class and object syntax, 
 // there is one important method that sets them apart. 
 // It's called the constructor method. JavaScript calls the constructor() method 
@@ -135,7 +142,7 @@ const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
 //---------------------------------Methods-----------------------------------------
 //-------------------------------------------------------------------------------------
 // Class method and getter syntax is the same as it is for objects 
-// except you can not include commas between methods.
+// ******EXCEPT YOU CAN NOT INCLUDE COMMAS BETWEEN METHODS
 
 class Dog {
   constructor(name) {
@@ -178,17 +185,234 @@ class Surgeon {
   get department() {
   	return this._department;
   }
-
+  
   get remainingVacationDays() {
   	return this._remainingVacationDays;
   }
-
+  
   takeVacationDays(daysOff) {
-  	return this._remainingVacationDays - daysOff;
+  	//Inside of the method, subtract daysOff from the number saved to 
+  	//_remainingVacationDays. Set _remainingVacationDays to the result.
+  	this._remainingVacationDays -= daysOff;
+  }
+}
+
+
+
+const surgeonCurry = new Surgeon('Curry', 'Cardiovascular');
+const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
+
+//---------------------------------Method Calls--------------------------------------
+//-----------------------------------------------------------------------------------
+// The syntax for calling methods and getters on an instance is the same 
+// as calling them on an object — append the instance with a period, 
+// then the property or method name. For methods, you must also 
+// include opening and closing parentheses.
+class Dog {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+const halley = new Dog('Halley');
+
+let nikko = new Dog('Nikko'); // Create dog named Nikko
+nikko.incrementBehavior(); // Add 1 to nikko instance's behavior
+let bradford = new Dog('Bradford'); // Create dog name Bradford
+console.log(nikko.behavior); // Logs 1 to the console
+console.log(bradford.behavior); // Logs 0 to the console
+
+// Create two new Dog instances, nikko and bradford
+// increment the behavior of our nikko instance, but not bradford
+// accessing nikko.behavior returns 1 and accessing bradford.behavior returns 0.
+
+class Surgeon {
+  constructor(name, department) {
+    this._name = name;
+    this._department = department;
+    this._remainingVacationDays = 20;
+  }
+
+  get name() {
+  	return this._name;
+  }
+
+  get department() {
+  	return this._department;
+  }
+  
+  get remainingVacationDays() {
+  	return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    //Inside of the method, subtract daysOff from the number saved to 
+  	//_remainingVacationDays. Set _remainingVacationDays to the result.
+  	this._remainingVacationDays -= daysOff;
   }
 }
 
 const surgeonCurry = new Surgeon('Curry', 'Cardiovascular');
-// create new Surgeon instance
 const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
 
+console.log(surgeonCurry.name);
+surgeonCurry.takeVacationDays(3);
+console.log(surgeonCurry.remainingVacationDays);
+
+//---------------------------------Inheritance I--------------------------------------
+//-----------------------------------------------------------------------------------
+class Cat {
+  constructor(name, usesLitter) {
+    this._name = name;
+    this._usesLitter = usesLitter;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get usesLitter() {
+    return this._usesLitter;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }  
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+// Here we create a Cat class. It shares a couple of properties (_name and _behavior) 
+// and a method (.incrementBehavior()) with the Dog class from previos exercise
+// The Cat class also contains one additional property (_usesLitter)
+// that holds a boolean value to indicate whether a cat can use their litter box.
+
+// When multiple classes share properties or methods, they become candidates for 
+// inheritance — a tool developers use 
+// to decrease the amount of code they need to write.
+
+// With inheritance, you can create a parent class (also known as a superclass) 
+// with properties and methods that multiple child classes (also known as subclasses) 
+// share. The child classes inherit the properties and methods from their parent class.
+
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+// the Animal class contains the properties and methods that the 
+// Cat and Dog classes share (name, behavior, .incrementBehavior())
+
+//---------------------------------Inheritance II-------------------------------------
+//-----------------------------------------------------------------------------------
+
+// The Animal class below contains the shared properties and methods of Cat and Dog
+
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+// The code below shows the Cat class that will inherit information from the Animal class
+
+class Cat {
+  constructor(name, usesLitter) {
+    this._name = name;
+    this._usesLitter = usesLitter;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }
+
+  get usesLitter() {
+    return this._usesLitter;
+  }
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+// create a parent class named HospitalEmployee
+// Add a constructor with name as an argument
+// the _remainingVacationDays is always set to 20, 
+// name is the only input parameter
+// In constructor() set the instance's _name to name and _remainingVacationDays to 20
+// create getters for your _name and _remainingVacationDays properties
+// Inside the getter, return the property's value
+// add a method called takeVacationDays
+// This method should accept one argument, called daysOff
+// Inside the method, subtract daysOff from _remainingVacationDays
+// Save the result to _remainingVacationDays
+
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    return this._remainingVacationDays -= daysOff;
+  }
+}
+
+//---------------------------------Inheritance III------------------------------------
+//-----------------------------------------------------------------------------------
