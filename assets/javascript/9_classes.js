@@ -484,3 +484,233 @@ console.log(bryceCat._name); // output: Bryce
 // our _name property directly. 
 // In the next exercise, we'll address this by calling an 
 // inherited getter method for our name property.
+
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+}
+
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+		super(name);
+    this._certifications = certifications;
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk',  ['Trauma', 'Pediatrics']);
+
+console.log(nurseOlynyk._name);
+console.log(nurseOlynyk._certifications);
+
+//---------------------------------Inheritance IV------------------------------------
+//-----------------------------------------------------------------------------------
+// When we call extends in a class declaration
+// all of the parent methods are available to the child class.
+
+// Here we extend our Animal class to a Cat subclass.
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+} 
+
+
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
+}
+
+const bryceCat = new Cat('Bryce', false);
+
+// our Cat class extends Animal. As a result, 
+// the Cat class has access to the Animal getters 
+// and the .incrementBehavior() method.
+// we create a Cat instance named bryceCat
+// Because bryceCat has access to the name getter
+
+console.log(bryceCat.name);
+
+// Since the extends keyword brings all of the parent's getters 
+// and methods into the child class, bryceCat.name accesses the name getter 
+// and returns the value saved to the name property.
+
+bryceCat.incrementBehavior(); // Call .incrementBehavior() on Cat instance 
+console.log(bryceCat.behavior); // Log value saved to behavior
+// The correct answer is 1
+
+// The Cat class inherits the _behavior property, behavior getter, 
+// and the .incrementBehavior() method from the Animal class.
+
+// When we created the bryceCat instance, the Animal constructor 
+// set the _behavior property to zero.
+
+// The first line of code calls the inherited .incrementBehavior() method,
+//  which increases the bryceCat _behavior value from zero to one.
+
+// The second line of code calls the behavior getter and 
+// logs the value saved to _behavior (1).
+
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+}
+
+class Nurse extends HospitalEmployee {
+ constructor(name, certifications) {
+   super(name);
+   this._certifications = certifications;
+ } 
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+
+//---------------------------------Inheritance V-------------------------------------
+//-----------------------------------------------------------------------------------
+// inherited features, child classes can contain their 
+// own properties, getters, setters, and methods.
+
+// we will add a usesLitter getter
+// The syntax for creating getters, setters, and methods
+// is the same as it is in any other class
+
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
+
+  get usesLitter() {
+    return this._usesLitter;
+  }
+}
+
+// create a usesLitter getter in the Cat class that 
+// returns the value saved to _usesLitter
+
+// Compare the Cat class above to the one we created without inheritance:
+// decreased the number of lines required to create the Cat class by about half.
+//  benefits (time saved, readability, efficiency) of inheritance grow 
+// as the number and size of your subclasses increase.
+class Cat {
+  constructor(name, usesLitter) {
+    this._name = name;
+    this._usesLitter = usesLitter;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get usesLitter() {
+    return this._usesLitter;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+// One benefit is that when you need to change a method or property that 
+// multiple classes share, you can change the parent class, instead of each subclass
+// create an additional subclass, called Dog
+
+class Dog extends Animal {
+  constructor(name) {
+    super(name);
+  }
+}
+
+// This Dog class has access to the same properties, getters, setters, and methods 
+// as the Dog class we made without inheritance, and is a quarter the size.
+
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+}
+
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+    super(name);
+    this._certifications = certifications;
+  }
+  
+  get certifications() {
+		return this._certifications;
+  }
+  
+  addCertification(newCertification) {
+    this._certifications.push(newCertification);
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+
+nurseOlynyk.addCertication('Genetics');
+consol.log(nurseOlynyk.certifications);
