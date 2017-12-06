@@ -727,3 +727,156 @@ console.log(nurseOlynyk.certifications);
 // returns the current date, directly from the class. 
 // The .now() method is static, so you can call it directly from the class,
 //  but not from an instance of the class.
+
+// use the static keyword to create a static method called generateName method
+// in our Animal class:
+
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  static generateName() {
+    const names = ['Angel', 'Spike', 'Buffy', 'Willow', 'Tara'];
+    const randomNumber = Math.floor(Math.random()*5);
+    return names[randomNumber];
+  }
+}
+
+// above, we create a static method called .generateName() that 
+// returns a random name when it's called. Because of the static keyword,
+//  we can only access .generateName() by appending it to the Animal class.
+
+// call the .generateName() method with the following syntax:
+console.log(Animal.generateName()); // returns a name
+
+// You cannot access the .generateName() method 
+// from instances of the Animal class or instances of its subclasses (See below)
+const tyson = new Animal('Tyson'); 
+tyson.generateName(); // TypeError
+
+// The example above will result in an error
+// because you cannot call static methods (.generateName()) on an instance (tyson)
+
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+  
+  static generatePassword() {
+    return Math.floor(Math.random() * 10000);
+  }
+}
+
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+    super(name);
+    this._certifications = certifications;
+  } 
+  
+  get certifications() {
+    return this._certifications;
+  }
+  
+  addCertification(newCertification) {
+    this.certifications.push(newCertification);
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+nurseOlynyk.addCertification('Genetics');
+console.log(nurseOlynyk.certifications);
+
+//---------------------------------Review: Classes-------------------------------------
+//-----------------------------------------------------------------------------------
+
+// Classes are templates for objects.
+
+// Javascript calls a constructor method when we create a new instance of a class.
+
+// Inheritance is when we create a parent class with properties 
+// and methods that we can extend to child classes.
+
+// We use the extends keyword to create a subclass.
+
+// The super keyword calls the constructor() of a parent class.
+
+// Static methods are called on the class, but not on instances of the class.
+
+class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+  
+  static generatePassword() {
+    return Math.floor(Math.random() * 10000);
+  }
+}
+
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+    super(name);
+    this._certifications = certifications;
+  } 
+  
+  get certifications() {
+    return this._certifications;
+  }
+  
+  addCertification(newCertification) {
+    this.certifications.push(newCertification);
+  }
+}
+
+class Doctor extends HospitalEmployee {
+  constructor(name, insurance) {;
+		super(name);
+  	this._insurance = insurance;
+  }
+  
+  get insurance() {
+    return this._insurance;
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.name);
+console.log(nurseOlynyk.remainingVacationDays);
+nurseOlynyk.addCertification('Genetics');
+console.log(nurseOlynyk.certifications);
+
+const doctorOmega = new Doctor('Omega', 'Bullet Club');
+console.log(doctorOmega.name);
+console.log(doctorOmega.insurance);
+doctorOmega.takeVacationDays(19);
+console.log(doctorOmega.remainingVacationDays);
