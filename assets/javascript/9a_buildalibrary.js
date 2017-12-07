@@ -20,3 +20,37 @@
 // isCheckedOut (boolean, initially false), and ratings (array, initially empty), songs (array of strings)
 // Getters: all properties have a getter
 // Methods: .getAverageRating(), .toggleCheckOutStatus(), and .addRating()
+
+//=================================================
+
+class Media {
+	constructor(title) {
+		this._title = title;
+		this._isCheckedOut = false;
+		this._ratings = [];
+	}
+
+	get title() {
+		return this._title;
+	}
+
+	get isCheckedOut() {
+		return this._isCheckedOut;
+	}
+
+	get ratings() {
+		return this._ratings;
+	}
+
+	getAverageRating() {
+		//this.ratings += ratings
+	}
+
+	toggleCheckOutStatus() {
+		//this._isCheckedOut = true;
+	}
+
+	addRating(newRatings) {
+		this.ratings.push(newRatings);
+	}
+}
