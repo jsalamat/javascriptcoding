@@ -42,15 +42,16 @@ class Media {
 		return this._ratings;
 	}
 
-	getAverageRating() {
-		//this.ratings += ratings
-	}
-
 	toggleCheckOutStatus() {
-		//this._isCheckedOut = true;
-	}
-
-	addRating(newRatings) {
+    this._isCheckedOut = !this._isCheckedOut;
+  	}
+  
+  	getAverageRating() {
+    let ratingsSum = this.ratings.reduce((currentSum, rating) => currentSum + rating, 0);
+    const lengthOfratings = ratings.length;
+  	}
+  
+  	addRating(newRatings) {
 		this.ratings.push(newRatings);
 	}
 }
