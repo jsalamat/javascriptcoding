@@ -29,5 +29,24 @@ factorialize(5);
 
 // ----------------------------------------------
 console.log('-------------------------------------------------')
+console.log('Check for Palindromes')
+// Check for Palindromes
+
+function palindrome(str) {
+  var newStr = str.replace(/[\W_]/g, '').toLowerCase();
+  var flip = newStr.split('').reverse().join('').toLowerCase();
+  
+  if (newStr === flip) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+palindrome("fat");
+
+// ----------------------------------------------
+console.log('-------------------------------------------------')
 console.log('TITLE')
 // TITLE
