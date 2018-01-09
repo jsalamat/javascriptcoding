@@ -48,5 +48,23 @@ palindrome("fat");
 
 // ----------------------------------------------
 console.log('-------------------------------------------------')
+console.log('Find the Longest Word in a String')
+// Find the Longest Word in a String
+
+function findLongestWord(str) {
+  var arrayWords = str.split(" ");
+  var singlewords = "";
+    for(var i = 0; i < arrayWords.length; i++){      
+      if(arrayWords[i].length > singlewords.length){
+        singlewords = arrayWords[i];
+      }
+    }
+  return singlewords.length;
+}
+
+findLongestWord("The quick brown fox jumped over the lazy dog");
+
+// ----------------------------------------------
+console.log('-------------------------------------------------')
 console.log('TITLE')
 // TITLE
