@@ -16,19 +16,25 @@
       { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
     ];
     const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
-    // Array.prototype.filter()
+    // Array.prototype.filter() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     // 1. Filter the list of inventors for those who were born in the 1500's
     	// A) filter inventors array
-    	// B) pass in function to loop over the array for each inventor
-    	// C) look for truthy statament
+    	// B) pass in function to loop over each inventor
+    	// C) create if statement to look for truthy statament to keep it
+    console.log('Filter the list of inventors for those who were born in the 1500s');
     let fifteenInventors = inventors.filter(function (inventor) {
     	if (inventor.year >= 1500 && inventor.year <= 1600 ) {
     		return true; // keep it
     	}
     });
 
-    console.table(fifteenInventors);
-    // Array.prototype.map()
+    console.log('----------------E6----------------------');
+    let es6fifteenInventors = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year <= 1600))
+
+    //console.table(fifteenInventors);
+    console.table(es6fifteenInventors);
+    console.log('--------------------------------------------');
+    // Array.prototype.map() 
     // 2. Give us an array of the inventors' first and last names
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
