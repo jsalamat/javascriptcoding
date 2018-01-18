@@ -16,30 +16,51 @@
       { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
     ];
     const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+    console.log('----------------filter()----------------------');
     // Array.prototype.filter() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     // 1. Filter the list of inventors for those who were born in the 1500's
     	// A) filter inventors array
     	// B) pass in function to loop over each inventor
     	// C) create if statement to look for truthy statament to keep it
-    console.log('Filter the list of inventors for those who were born in the 1500s');
     let fifteenInventors = inventors.filter(function (inventor) {
     	if (inventor.year >= 1500 && inventor.year <= 1600 ) {
     		return true; // keep it
     	}
     });
 
-    console.log('----------------E6----------------------');
+    console.log('----------------E6');
     let es6fifteenInventors = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year <= 1600))
 
     //console.table(fifteenInventors);
     console.table(es6fifteenInventors);
     console.log('--------------------------------------------');
-    // Array.prototype.map() 
+    console.log('----------------map()----------------------');
+    // Array.prototype.map() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
     // 2. Give us an array of the inventors' first and last names
-    // Array.prototype.sort()
+    let firstAndLastNames = inventors.map(function (inventor) {
+    	return inventor.first + " " + inventor.last;
+    })
+
+    console.table(firstAndLastNames);
+    console.log('--------------------------------------------');
+    console.log('----------------sort()----------------------');
+    // Array.prototype.sort() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     // 3. Sort the inventors by birthdate, oldest to youngest
-    // Array.prototype.reduce()
+	let oldestInventors = inventors.sort(function(a, b) {
+	  return a.year - b.year;
+	});
+
+	console.table(oldestInventors);
+	console.log('--------------------------------------------');
+	console.log('----------------reduce()----------------------');
+    // Array.prototype.reduce() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
     // 4. How many years did all the inventors live?
+    let lifeOfInventors = inventors.reduce(function(a, b) {
+    	return a.passed - b.year;
+    });
+
+    console.table(lifeOfInventors);
+    console.log('--------------------------------------------');
     // 5. Sort the inventors by years lived
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
