@@ -41,7 +41,14 @@
     	return inventor.first + " " + inventor.last;
     })
 
-    console.table(firstAndLastNames);
+    //console.table(firstAndLastNames);
+    console.log('----------------E6');
+    //concat version with space
+    //let es6firstAndLastNames = inventors.map(inventor => inventor.first + " " + inventor.last);
+    //or backticks version
+    let es6firstAndLastNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+
+    console.table(es6firstAndLastNames);
     console.log('--------------------------------------------');
     console.log('----------------sort()----------------------');
     // Array.prototype.sort() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
