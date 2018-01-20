@@ -57,16 +57,40 @@
 	  return a.year - b.year;
 	});
 
-	console.table(oldestInventors);
+	//console.table(oldestInventors);
+	//Other Way
+	let oldestInventorsB = inventors.sort(function (a, b) {
+		if(a.year > b.year) {
+			return 1; // moves up in array
+		} else {
+			return -1; // moves down in array
+		}
+	});
+
+	//console.table(oldestInventorsB);
+	console.log('----------------E6');
+	// Using Ternary Operator
+	// condition ? expr1 : expr2
+	let es6OldestInventors = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+
+	console.table(es6OldestInventors);
 	console.log('--------------------------------------------');
 	console.log('----------------reduce()----------------------');
     // Array.prototype.reduce() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
     // 4. How many years did all the inventors live?
+    let totalYears = 0;
+
+    for (let i = 0; i < inventors.length; i++) {
+    	totalYears += inventors[i].year;
+    }
+
+    console.log(totalYears);
+
     let lifeOfInventors = inventors.reduce(function(a, b) {
-    	return a.passed - b.year;
+    	return  a.passed - b.year;
     });
 
-    console.table(lifeOfInventors);
+    console.log(lifeOfInventors);
     console.log('--------------------------------------------');
     // 5. Sort the inventors by years lived
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
