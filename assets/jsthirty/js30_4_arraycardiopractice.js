@@ -82,16 +82,18 @@
     let totalYears = 0;
 
     for (let i = 0; i < inventors.length; i++) {
-    	totalYears += inventors[i].year;
+    	totalYears += inventors[i].passed - inventors[i].year;
     }
 
     console.log(totalYears);
     // Using reduce() method
 
+    
     const totalYearsB = inventors.reduce((total, inventor) => {
-    	return total + (inventor.passed - inventor.year)
-    })
-
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+    // Zero was added here because first time around total is undefined
+    // putting zero wil allow to add it up
     console.log(totalYearsB);
     console.log('--------------------------------------------');
     // 5. Sort the inventors by years lived
