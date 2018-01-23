@@ -78,6 +78,7 @@
 	console.log('----------------reduce()----------------------');
     // Array.prototype.reduce() //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
     // 4. How many years did all the inventors live?
+    // For Loop version
     let totalYears = 0;
 
     for (let i = 0; i < inventors.length; i++) {
@@ -85,12 +86,13 @@
     }
 
     console.log(totalYears);
+    // Using reduce() method
 
-    let lifeOfInventors = inventors.reduce(function(a, b) {
-    	return  a.passed - b.year;
-    });
+    const totalYearsB = inventors.reduce((total, inventor) => {
+    	return total + (inventor.passed - inventor.year)
+    })
 
-    console.log(lifeOfInventors);
+    console.log(totalYearsB);
     console.log('--------------------------------------------');
     // 5. Sort the inventors by years lived
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
