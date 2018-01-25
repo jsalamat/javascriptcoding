@@ -117,11 +117,29 @@
     console.table(longLifeInventorsB)
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    const Category = document.querySelector('.mw-category');
-    const links = Array.from(catergory.querySelectorAll('a'));
+    // done in console
+
+    // inspect what contain in webpage
+    const category = document.querySelector('.mw-category')
+
+    //then we look for links within it
+    // covert links to list of names then filter the names that include actual names
+    // take in a list of links and pick list f names by map each one
+    // from that link just return the text content
+    // *** Problem queryselector will return Nodelist. 
+    // *** map is not in prototype. so we need to change it to an array
+    
+    // Two way to make an array
+    // const links = [...catergory.querySelectorAll('a')];
+    // Or
+    const links = Array.from(category.querySelectorAll('a'))
+
     const de = links
     			.map(link => link.textContent)
-    			.filter(streetName => streetName.includes('de'));
+    			.filter(streetName => streetName.includes('de'))
+    			// filter only return street name if it include 'de'
+    // de
+    
     // 7. sort Exercise
     // Sort the people alphabetically by last name
     // 8. Reduce Exercise
