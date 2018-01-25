@@ -156,14 +156,28 @@
     	// const parts = lastOne.split(', ') deconstructure it so return in their in own variable
     	// we put it in squere bracket
     	//const [last, first] = lastOne.split(', ');
-    	console.log(last, first);
+    	// console.log(last, first);
     	const [aLast, aFirst] = lastOne.split(', ');
     	const [bLast, bFirst] = nextOne.split(', ');
     	return aLast > bLast ? 1 : -1;
     })
     console.log(alphabeticalLastNameB);
     console.log('--------------------------------------------');
-    console.log('----------------sort()----------------------');
+    console.log('----------------reduce()----------------------');
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+    // start with blank obj // {}
+    //then loop over data
+    // if there no obj item then obj item is equal to zero
+    // it will set the inital to zero
+    // then increment  and return obj
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const transportation = data.reduce(function (obj, item) {
+    	if(!obj[item]) {
+    		obj[item] = 0;
+    	}
+    	obj[item]++;
+    	return obj;
+    }, {});
+    console.log(transportation);
