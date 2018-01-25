@@ -120,8 +120,6 @@
     // done in console
 
     // inspect what contain in webpage
-    const category = document.querySelector('.mw-category')
-
     //then we look for links within it
     // covert links to list of names then filter the names that include actual names
     // take in a list of links and pick list f names by map each one
@@ -129,19 +127,43 @@
     // *** Problem queryselector will return Nodelist. 
     // *** map is not in prototype. so we need to change it to an array
     
+    // const category = document.querySelector('.mw-category')
+    
     // Two way to make an array
     // const links = [...catergory.querySelectorAll('a')];
     // Or
-    const links = Array.from(category.querySelectorAll('a'))
+    // const links = Array.from(category.querySelectorAll('a'))
 
-    const de = links
-    			.map(link => link.textContent)
-    			.filter(streetName => streetName.includes('de'))
+    // const de = links
+    //			.map(link => link.textContent)
+    //			.filter(streetName => streetName.includes('de'))
     			// filter only return street name if it include 'de'
     // de
-    
+
+    console.log('--------------------------------------------');
+    console.log('----------------sort()----------------------');
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    //let alphabeticalLastName = people.sort()
+    //console.log(alphabeticalLastName);
+
+    //or
+    // 
+    const alphabeticalLastNameB = people.sort((lastOne, nextOne) => {
+    	// console.log(lastOne);
+    	// then convert it to first Name and last Name
+    	// so we split at (", ") and create an array
+    	// const parts = lastOne.split(', ') deconstructure it so return in their in own variable
+    	// we put it in squere bracket
+    	//const [last, first] = lastOne.split(', ');
+    	console.log(last, first);
+    	const [aLast, aFirst] = lastOne.split(', ');
+    	const [bLast, bFirst] = nextOne.split(', ');
+    	return aLast > bLast ? 1 : -1;
+    })
+    console.log(alphabeticalLastNameB);
+    console.log('--------------------------------------------');
+    console.log('----------------sort()----------------------');
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
