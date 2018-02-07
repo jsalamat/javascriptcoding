@@ -75,7 +75,8 @@ console.log('----------------findIndex()----------------------');
 // Array.prototype.findIndex() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
 // arr.findIndex(callback[, thisArg])
 // find something particular in the array 
-// 4. Find the comment with this ID
+// 4a. Find the comment with this ID
+// 4b. delete the comment with the ID of 823423
 /*
 const index = comments.findIndex(function(comment){
 	if(comment.id === 823423) {
@@ -86,5 +87,23 @@ const index = comments.findIndex(function(comment){
 const index = comments.findIndex(comment => comment.id === 823423);
 
 console.log(index);
-console.log('--------------------------------------------');
-// 5. delete the comment with the ID of 823423
+console.log('-----two ways to delete: splice or spread-------');
+console.table(comments);
+//splice
+// array.splice(start[, deleteCount[, item1[, item2[, ...]]]]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+/*
+comments.splice(index, 1);
+console.table(comments);
+*/
+
+// spread ...
+	// create a new array from updated comments
+	// spread the items into new array
+	// slice start 0 until index
+	// slice start at index + 1 <== at end of index
+const newComments = [
+	...comments.slice(0, index),
+	...comments.slice(index + 1)
+];
+
+console.table(newComments);
