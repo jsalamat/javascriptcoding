@@ -73,8 +73,18 @@ console.log(idComment);
 
 console.log('----------------findIndex()----------------------');
 // Array.prototype.findIndex() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
-// arr.findIndex(callback[, thisArg]) 
+// arr.findIndex(callback[, thisArg])
+// find something particular in the array 
 // 4. Find the comment with this ID
+/*
+const index = comments.findIndex(function(comment){
+	if(comment.id === 823423) {
+		return true;
+	}
+})
+*/
+const index = comments.findIndex(comment => comment.id === 823423);
 
+console.log(index);
 console.log('--------------------------------------------');
 // 5. delete the comment with the ID of 823423
