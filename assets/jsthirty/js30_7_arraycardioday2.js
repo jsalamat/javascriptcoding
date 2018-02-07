@@ -18,33 +18,63 @@ console.log('----------------some()----------------------');
 // arr.some(callback[, thisArg]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
 // 1. Array.prototype.some() // is at least one person 19 or older?
 	// A) .some() will use function  to check for every person
-	// B) get current year and see is person is over 19 years old
+	// B) get current year and see is person is over 19 years old return true
+/*
 const isAdult = people.some(function(person) {
 	const currentYear = (new Date()).getFullYear();
 	if(currentYear - person.year >= 19) {
 		return true;
 	}
 });
+*/
+/*
+const isAdult = people.some(person => {
+	const currentYear = (new Date()).getFullYear();
+	if(currentYear - person.year >= 19) {
+		return true;
+	}
+})
+*/
+const isAdult = people.some(person => ((new Date()).getFullYear()) - person.year >= 19 );
 
 console.log(isAdult); // true
+console.log({isAdult}); // show the name of the vairable and value
 
 console.log('----------------every()----------------------');
+// arr.every(callback[, thisArg]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
 // 2. Array.prototype.every() // is everyone 19 or older?
+	// check if every single person in people array is 19 or older
+
+const allAdult = people.every(function(person) {
+	const currentYear = (new Date()).getFullYear();
+	if(currentYear - person.year >= 19) {
+		return true;
+	}
+});
+
+console.log(allAdult); // true
+console.log({allAdult}); // show the name of the vairable and value
 
 console.log('----------------find()----------------------');
-// 3. Array.prototype.find()
+// Array.prototype.find()
+// arr.find(callback[, thisArg]) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+// Find is like filter, but instead returns just the one you are looking for
+// 3. find the comment with the ID of 823423
+/*
+const idComment = comments.find(function(comment){
+	if(comment.id === 823423) {
+		return true;
+	}
+})
+*/
+const idComment = comments.find(comment => comment.id === 823423);
 
-console.log('--------------------------------------------');
-// 4. Find is like filter, but instead returns just the one you are looking for
-
-console.log('--------------------------------------------');
-// 5. find the comment with the ID of 823423
+console.log(idComment);
 
 console.log('----------------findIndex()----------------------');
-// 6. Array.prototype.findIndex()
+// Array.prototype.findIndex() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+// arr.findIndex(callback[, thisArg]) 
+// 4. Find the comment with this ID
 
 console.log('--------------------------------------------');
-// 7. Find the comment with this ID
-
-console.log('--------------------------------------------');
-// 8. delete the comment with the ID of 823423
+// 5. delete the comment with the ID of 823423
