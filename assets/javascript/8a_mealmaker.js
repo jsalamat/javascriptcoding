@@ -1,65 +1,66 @@
 const menu = {
-  _courses: {
-    _appetizers: [],
-    _mains: [],
-    _desserts: [],
-    
-    get appetizers() {
-      return this._appetizers;
-    },
-    set appetizers(appetizersIn) {
-      this._appetizers = appetizersIn;
-    },
-    
-    
-    get mains() {
-      return this._mains
-    },
-    set mains(mainsIn) {
-      this._mains = mainsIn;
-    },
-    
-    
-    
-    get desserts() {
-      return this._desserts;
-    },
-    set desserts(dessertsIn) {
-      this._desserts = dessertsIn;
-    },   
-  },
+    _courses: {
+      _appetizers: [],
+      _mains: [],
+      _desserts: [],    
   
-  get courses() {
-    return {
-      appetizers: this._courses.appetizers,
-      mains: this._courses.mains,
-      desserts: this._courses.desserts,
-    };
-  },
-  
-  addDishToCourse (courseName, dishName, dishPrice) {
-    const dish = {
-      name: dishName,
-      price: dishPrice,
-    };
-    
-    this._courses[courseName].push(dish);
-    // also try using your setter method!
-  },
-  
-  getRandomDishFromCourse (courseName) {
-    const dishes = this._courses[courseName];
-    const randomIndex = Math.floor(Math.random() * dishes.length);
-    return dishes[randomIndex]; // return a dish from `dishes` by using `randomIndex`
-  },
+        get appetizers() {
+           return this._appetizers;
+        },
 
-  generateRandomMeal () {
-    const appetizers = this.getRandomDishFromCourse('appetizers');
-    const mains = this.getRandomDishFromCourse('mains');
-    const desserts = this.getRandomDishFromCourse('desserts');
-    const totalPrice = appetizers.price + mains.price + desserts.price;
+        set appetizers(appetizerIn) {
+          this._appetizers = appetizerIn;
+        },
+
+        get mains() {
+           return this._mains;
+        },
+
+        set mains(mainsIn) {
+          this._mains = mainsIn;
+        },
+
+        get desserts() {
+           return this._desserts;
+        },
+
+        set desserts(dessertIn) {
+          this._desserts = dessertIn;
+        },
+      
+    },
+  
+    get courses() {
+        return {
+          appetizers: this._courses.appetizers,
+          mains: this._courses.mains,
+          desserts: this._courses.desserts,
+        };
+    },
+  
+    addDishToCourse(courseName, dishName, dishPrice) {
+        const dish = {
+            name: dishName,
+            price: dishPrice
+        };
+      
+        this._courses[courseName].push(dish);
+        // also try using your setter method!
+    },
     
-    return `Your meal is ${appetizers.name},  ${mains.name}, and ${desserts.name}. The total price is $${totalPrice}.`;
+    getRandomDishFromCourse(courseName) {
+      let dishes = this._courses[courseName];
+      const randomIndex = Math.floor(Math.random() * dishes.length);
+      return dishes[randomIndex];
+      // return a dish from `dishes` by using `randomIndex`
+    },
+    
+    generateRandomMeal() {
+      const appetizer = this.getRandomDishFromCourse('appetizers');
+      const mains = this.getRandomDishFromCourse('mains');
+      const desserts = this.getRandomDishFromCourse('desserts');
+      const totalPrice = appetizer.price + mains.price + desserts.price
+      return `Your meal is ${appetizer.name}, ${mains.name}, and ${desserts.name} The price is $${totalPrice}.`;
   }
 };
 
